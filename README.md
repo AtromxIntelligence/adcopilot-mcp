@@ -5,18 +5,21 @@
 [adcopilot.cloud](https://adcopilot.cloud) · [Start a free 7-day pilot](https://mcp.adcopilot.cloud/signup) · [Security model](https://adcopilot.cloud/security) · [Tutorials](https://adcopilot.cloud/tutorials)
 
 AdCopilot is a hosted [Model Context Protocol](https://modelcontextprotocol.io) connector for Google Ads,
-built and operated by [Atromx Intelligence](https://atromx.com). You sign in with **your own Google
-account**, receive a private connector address, and paste it into the AI client you already use.
-No developer token, no Cloud project, no server to run.
+built and operated by [Atromx Intelligence](https://atromx.com). You add **one MCP URL** to the AI client
+you already use, then sign in with **your own Google account** — no key to copy, no developer token, no
+Cloud project, no server to run.
 
 ```bash
 # Claude Code / any CLI that takes a remote MCP:
-claude mcp add --transport http adcopilot https://mcp.adcopilot.cloud/c/<your-key>/mcp
+claude mcp add --transport http adcopilot https://mcp.adcopilot.cloud/mcp
 ```
 
 ```json
-{ "mcpServers": { "adcopilot": { "httpUrl": "https://mcp.adcopilot.cloud/c/<your-key>/mcp" } } }
+{ "mcpServers": { "adcopilot": { "url": "https://mcp.adcopilot.cloud/mcp" } } }
 ```
+
+On first connect the client opens a Google sign-in — that's the whole setup. The URL is the same for
+everyone; there is no per-user key or secret address to paste.
 
 ## Why hosted, and why this one
 
@@ -99,10 +102,10 @@ OpenCode — anything speaking MCP over streamable HTTP. Setup guides: [adcopilo
 
 ## Security model, in one paragraph
 
-Your connector runs under your own Google sign-in, so it reaches exactly the accounts Google already
+Your connection runs under your own Google sign-in, so it reaches exactly the accounts Google already
 lets you reach. We store one credential — an encrypted refresh token — never your password, never your
 advertising data. Withdraw access any time from your own Google account and the credential dies at
-source. Connectors can be scoped to named customer IDs, switched off per member, and every call —
+source. Connections can be scoped to named customer IDs, switched off per member, and every call —
 including every refusal — is in the audit trail. Full detail: [adcopilot.cloud/security](https://adcopilot.cloud/security).
 
 ## Pricing
