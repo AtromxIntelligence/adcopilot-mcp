@@ -1,13 +1,19 @@
-# AdCopilot — the hosted Google Ads MCP server
+# AdCopilot — the write-capable Google Ads MCP server
 
 **The AI agent that runs your Google Ads — inside Claude, ChatGPT, Copilot, Gemini CLI, Cursor, or any MCP client.**
 
-[adcopilot.cloud](https://adcopilot.cloud) · [Start a free 7-day pilot](https://mcp.adcopilot.cloud/signup) · [Security model](https://adcopilot.cloud/security) · [Tutorials](https://adcopilot.cloud/tutorials)
+[adcopilot.cloud](https://adcopilot.cloud) · [Start a free 7-day trial](https://app.adcopilot.cloud/signup) · [Security model](https://adcopilot.cloud/security) · [Tutorials](https://adcopilot.cloud/tutorials)
 
 AdCopilot is a hosted [Model Context Protocol](https://modelcontextprotocol.io) connector for Google Ads,
-built and operated by [Atromx Intelligence](https://atromx.com). You add **one MCP URL** to the AI client
-you already use, then sign in with **your own Google account** — no key to copy, no developer token, no
-Cloud project, no server to run.
+built and operated by [Atromx Intelligence](https://atromx.com). It is **built on Google's own
+open-source Google Ads MCP server** — a fork of `google-ads-mcp`, extended from that server's **3 read
+tools to 36 read-and-write tools** and hosted, so the assistant can *act* on an account rather than only
+report on it. You add **one MCP URL** to the AI client you already use, then sign in with **your own
+Google account** — no key to copy, no developer token, no Cloud project, no server to run.
+
+> **Google's official Google Ads MCP server is read-only.** It reports and analyses but cannot create a
+> campaign, change a bid, or add a keyword. AdCopilot is the **write-capable** one — it makes the change
+> on your command, and it can **never delete**.
 
 ```bash
 # Claude Code / any CLI that takes a remote MCP:
@@ -23,16 +29,19 @@ everyone; there is no per-user key or secret address to paste.
 
 ## Why hosted, and why this one
 
-| | Free self-hosted servers | **AdCopilot (hosted)** |
-|---|---|---|
-| Tools | 3, read-only | **32, reads and writes** |
-| Can it change a campaign? | No | Yes — create, adjust, pause, enable |
-| Can it delete anything? | — | **No. Structurally.** The four `remove_*` tools are never exposed, and any mutate carrying a `REMOVED` status is refused server-side, in any letter case. |
-| Developer token | Yours to obtain and manage | Ours by default (bring-your-own supported) |
-| Sign-in | Your OAuth plumbing | Your own Google account; Google-verified OAuth (Aug 2026) |
-| Teams | — | Per-member sign-in; each teammate individually revocable; org-level scoping |
-| Audit | — | Every call recorded — tool, account, outcome, refusals included |
-| Runs where | Your machine | Hosted; nothing to install |
+| | Google's official server | Free self-hosted servers | **AdCopilot (hosted)** |
+|---|---|---|---|
+| Tools | 3, read-only | 3, read-only | **32, reads and writes** |
+| Can it change a campaign? | No | No | Yes — create, adjust, pause, enable |
+| Can it delete anything? | — | — | **No. Structurally.** The four `remove_*` tools are never exposed, and any mutate carrying a `REMOVED` status is refused server-side, in any letter case. |
+| Developer token | Yours to obtain and manage | Yours to obtain and manage | Ours by default (bring-your-own supported) |
+| Sign-in | Your OAuth plumbing | Your OAuth plumbing | Your own Google account; Google-verified OAuth (Aug 2026) |
+| Teams | — | — | Per-member sign-in; each teammate individually revocable; org-level scoping |
+| Audit | — | — | Every call recorded — tool, account, outcome, refusals included |
+| Runs where | Google Cloud (you deploy) | Your machine | Hosted; nothing to install |
+
+Built on the same server Google publishes, so the "it uses the real Google Ads API" guarantee is the
+official one — with write tools and hosting added on top.
 
 ## The 32 hosted tools
 
@@ -75,7 +84,7 @@ everyone; there is no per-user key or secret address to paste.
 - **`create_callout_asset`** — Creates a callout asset that can be linked to campaigns or ad groups. Callouts add short snippets of text to your ad (e.g., "Free Shipping",
 - **`create_structured_snippet_asset`** — Creates a structured snippet asset that can be linked to campaigns or ad groups. Structured snippets highlight specific aspects of your prod
 - **`create_call_asset`** — Creates a call asset that can be linked to campaigns or ad groups. Call assets add a phone number to your ad, allowing users to call directl
-- **`create_image_asset`** — Creates an image asset from a URL or local file path. Supports both web URLs and local file paths on the user's computer. Recommended image 
+- **`create_image_asset`** — Creates an image asset from a URL or local file path. Supports both web URLs and local file paths on the user's computer. Recommended image
 - **`create_promotion_asset`** — Creates a promotion asset that can be linked to campaigns or ad groups. Promotion assets highlight sales and special offers in your ads.
 - **`create_price_asset`** — Creates a price asset that can be linked to campaigns or ad groups. Price assets showcase your products or services with their prices.
 - **`create_lead_form_asset`** — Creates a lead form asset that can be linked to campaigns or ad groups. Lead form assets collect user information directly from the ad.
@@ -110,9 +119,11 @@ including every refusal — is in the audit trail. Full detail: [adcopilot.cloud
 
 ## Pricing
 
-Free 7-day pilot on one account — full toolset, no card. Then a simple subscription:
-[start here](https://mcp.adcopilot.cloud/signup) or ask support@atromx.com.
+Free 7-day trial on one account — full toolset, no card. After the trial it drops automatically to a
+permanently free plan for one account (not a lockout); paid plans add more accounts and seats.
+[Start here](https://app.adcopilot.cloud/signup) or ask support@atromx.com.
 
 ---
 
-Google Ads is a trademark of Google LLC. AdCopilot is not affiliated with or endorsed by Google.
+AdCopilot by Atromx — the write-capable Google Ads MCP server. Google Ads is a trademark of Google LLC.
+AdCopilot is not affiliated with or endorsed by Google.
