@@ -63,7 +63,7 @@ Setup guides: [adcopilot.cloud/tutorials](https://adcopilot.cloud/tutorials).
 
 Free **7-day Pro trial** — full capability, no card. After the trial it drops automatically to a permanently
 free plan for one account (not a lockout); paid plans add more accounts and seats.
-[Start here](https://app.adcopilot.cloud/signup) or ask support@atromx.com.
+[Start here](https://app.adcopilot.cloud/signup) or ask support@adcopilot.cloud.
 
 ## Coverage &amp; limits, stated plainly
 
