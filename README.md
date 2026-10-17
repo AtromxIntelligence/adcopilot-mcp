@@ -30,8 +30,8 @@ Ads API access there.
 AdCopilot is published in **Anthropic's plugin directory** as
 [adcopilot-claude-plugin](https://github.com/AtromxIntelligence/adcopilot-claude-plugin) (MIT). It bundles this
 connector and adds the steps the connector cannot take for you — what to click in Google's own screens, and
-the traps that are easy to fall into — as five commands: `/adcopilot:setup`, `/adcopilot:launch`,
-`/adcopilot:measure`, `/adcopilot:audit` and `/adcopilot:daily`.
+the traps that are easy to fall into — as seven commands: `/adcopilot:setup`, `/adcopilot:launch`,
+`/adcopilot:measure`, `/adcopilot:audit`, `/adcopilot:daily`, `/adcopilot:negatives` and `/adcopilot:weekly`.
 
 Two steps, and the second is the one people miss:
 
@@ -73,7 +73,7 @@ free plan for one account (not a lockout); paid plans add more accounts and seat
 
 - **Google Ads is the only ad platform** today — Meta, LinkedIn and the rest are roadmap, not shipped. Within
   Google it also reads Analytics, Search Console and Tag Manager.
-- **No SOC 2** yet. It runs under your own Google OAuth; no password is shared and ad data is not stored.
+- **No SOC 2** yet. It runs under your own Google sign-in, and no password is shared.
 - **Unattended, always-on auditing is roadmap, not shipped.** Today the agent acts when you ask, and every change waits on your approval.
 
 ---
