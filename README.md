@@ -56,7 +56,7 @@ Claude — so a fresh sign-in reporting nothing connected is the server answerin
 - **Build campaigns** — Search and Performance Max, ad groups, responsive search ads, assets — created **paused**, for your review.
 - **Adjust everything, in plain language** — budgets, bids, keywords, negatives, geo, ad schedule and device bid adjustments.
 
-Every action is proposed first; with your AI client set to ask, as above, it runs only once you approve it, and the worst an approved action can do is reversible.
+Every action is proposed first; with your AI client set to ask, as above, it runs only once you approve it.
 
 ## Works in
 
