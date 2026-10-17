@@ -18,16 +18,20 @@ command**, and it can **never delete**.
 ## Setup, in one step
 
 Add one connector to your AI client and sign in with Google. The exact address and per-client steps live in
-your dashboard at [adcopilot.cloud](https://adcopilot.cloud) — there's no key or token to copy, and nothing to
+your dashboard at [adcopilot.cloud](https://adcopilot.cloud) — there's no key to copy, and nothing to
 install.
+
+AdCopilot connects to Google Ads through its own Google Cloud project, with your Google sign-in. If you want
+programmatic access to Google Ads for your own software, get your own Google Cloud account and apply for Google
+Ads API access there.
 
 ## In Claude: the plugin
 
 AdCopilot is published in **Anthropic's plugin directory** as
 [adcopilot-claude-plugin](https://github.com/AtromxIntelligence/adcopilot-claude-plugin) (MIT). It bundles this
 connector and adds the steps the connector cannot take for you — what to click in Google's own screens, and
-the traps that are easy to fall into — as five commands: `/adcopilot:setup`, `/adcopilot:launch`,
-`/adcopilot:measure`, `/adcopilot:audit` and `/adcopilot:daily`.
+the traps that are easy to fall into — as seven commands: `/adcopilot:setup`, `/adcopilot:launch`,
+`/adcopilot:measure`, `/adcopilot:audit`, `/adcopilot:daily`, `/adcopilot:negatives` and `/adcopilot:weekly`.
 
 Two steps, and the second is the one people miss:
 
@@ -42,8 +46,8 @@ Claude — so a fresh sign-in reporting nothing connected is the server answerin
 ## Why AdCopilot
 
 - **Runs in the chat you already use.** No new dashboard, no extra tab — Claude, ChatGPT, Copilot, Gemini CLI or Cursor.
-- **Safe with a live account.** It can **never delete** — removing a campaign, ad or keyword simply isn't something it can do. New campaigns arrive **paused**, and **every change waits for your approval**.
-- **Your login, your data.** It runs under your own Google sign-in. No password is shared, and your ad data is not stored or used to train models.
+- **Safe with a live account.** It can **never delete** — removing a campaign, ad or keyword simply isn't something it can do. New campaigns arrive **paused**, and AdCopilot proposes each change first. For a hard stop, set your AI client to ask before AdCopilot's write tools: Needs approval in Claude; in Cursor, use the Allowlist run mode and keep them off the allowlist (Cursor's cloud agents never ask).
+- **Your login, your data.** It runs under your own Google sign-in, and no password is shared. Nothing you do with it trains any model; what it keeps, and for how long, is on the [privacy page](https://adcopilot.cloud/privacy).
 - **Built for teams.** Per-member Google sign-in: each teammate signs in as themselves, every change is attributed to them, and per-account allow-lists keep the right hands on the right accounts.
 
 ## What it does
@@ -52,7 +56,7 @@ Claude — so a fresh sign-in reporting nothing connected is the server answerin
 - **Build campaigns** — Search and Performance Max, ad groups, responsive search ads, assets — created **paused**, for your review.
 - **Adjust everything, in plain language** — budgets, bids, keywords, negatives, geo, ad schedule and device bid adjustments.
 
-Every action is proposed and then gated behind your approval, so the worst an approved action can do is reversible.
+Every action is proposed first; with your AI client set to ask, as above, it runs only once you approve it.
 
 ## Works in
 
@@ -69,8 +73,8 @@ free plan for one account (not a lockout); paid plans add more accounts and seat
 
 - **Google Ads is the only ad platform** today — Meta, LinkedIn and the rest are roadmap, not shipped. Within
   Google it also reads Analytics, Search Console and Tag Manager.
-- **No SOC 2** yet. It runs under your own Google OAuth; no password is shared and ad data is not stored.
-- **Unattended, always-on auditing is roadmap, not shipped.** Today the agent acts when you ask, and every change waits on your approval.
+- **No SOC 2** yet.
+- **It is not unattended change.** On every plan, AdCopilot reads the account once a day to email you a short check-in that changes nothing; a change happens only when you ask for it in a conversation you are present for.
 
 ---
 
