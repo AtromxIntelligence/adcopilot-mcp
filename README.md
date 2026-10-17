@@ -18,8 +18,12 @@ command**, and it can **never delete**.
 ## Setup, in one step
 
 Add one connector to your AI client and sign in with Google. The exact address and per-client steps live in
-your dashboard at [adcopilot.cloud](https://adcopilot.cloud) — there's no key or token to copy, and nothing to
+your dashboard at [adcopilot.cloud](https://adcopilot.cloud) — there's no key to copy, and nothing to
 install.
+
+AdCopilot connects to Google Ads through its own Google Cloud project, with your Google sign-in. If you want
+programmatic access to Google Ads for your own software, get your own Google Cloud account and apply for Google
+Ads API access there.
 
 ## In Claude: the plugin
 
